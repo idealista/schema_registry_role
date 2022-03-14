@@ -1,0 +1,11 @@
+---
+
+schema_registry_private_tmp: false
+kafka_zookeeper_hosts: 
+  - zookeepertest:2181
+zookeeper_hosts:
+  - host: zookeepertest  # the machine running
+    id: 1
+
+kafka_offsets_topic_replication_factor: 1
+kafka_transaction_state_log_replication_factor: 1

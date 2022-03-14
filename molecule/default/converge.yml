@@ -1,0 +1,12 @@
+---
+- name: Converge
+  hosts: kafka_group
+  roles:
+    - role: kafka_role
+
+- name: Converge
+  hosts: schema_registry_group
+  roles:
+    - role: schema_registry_role
+
+

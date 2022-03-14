@@ -1,0 +1,17 @@
+---
+
+galaxy_info:
+  author: Pablo Lozano
+  company: Idealista S.A.U.
+  description: Schema Registry Role
+  min_ansible_version: 2.2
+  license: Apache 2.0
+  galaxy-tags:
+    - example_tag1
+    - example_tag2
+    - example_tag3
+  platforms:
+    - name: Debian
+      versions:
+        - stretch
+        - buster

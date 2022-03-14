@@ -1,0 +1,91 @@
+---
+dependency:
+  name: galaxy
+driver:
+  name: docker
+platforms:
+  - name: zookeepertest
+    hostname: zookeepertest
+    image: idealista/zookeeper:latest
+    privileged: true
+    capabilities:
+      - SYS_ADMIN
+    volumes:
+      - '/sys/fs/cgroup:/sys/fs/cgroup:ro'
+    groups:
+      - zookeeper
+    command: '/lib/systemd/systemd'
+    exposed_ports:
+      - 9100/tcp
+      - 2181/tcp
+    published_port:
+      - 0.0.0.0:2181:2181/tcp
+    purge_networks: yes
+    networks:
+      - name: kafka-network
+        aliases:
+          - zookeepertest
+        links:
+          - kafka 
+    pre_build_image: false
+    dns_servers:
+      - 10.80.1.86
+      - 10.80.5.61
+      - 10.80.11.5
+    dns_search_domains:
+  - name: kafka
+    hostname: kafka
+    image: idealista/jdk:8u265-stretch-openjdk-headless
+    privileged: true
+    capabilities:
+      - SYS_ADMIN
+    volumes:
+      - '/sys/fs/cgroup:/sys/fs/cgroup:ro'
+    groups:
+      - kafka_group
+    command: '/lib/systemd/systemd'
+    networks:
+      - name: kafka-network
+        aliases:
+          - kafka
+        links:
+          - schema_registry
+          - zookeepertest
+
+  - name: schemaregistry
+    groups:
+      - schema_registry_group
+    image: idealista/jdk:11.0.14-bullseye-openjdk-headless
+    privileged: false
+    capabilities:
+      - SYS_ADMIN
+    tmpfs:
+      - /tmp
+      - /run
+      - /run/lock
+    volumes:
+      - '/sys/fs/cgroup:/sys/fs/cgroup:ro'
+    command: '/lib/systemd/systemd'
+    networks:
+      - name: kafka-network
+        aliases:
+          - schemaregistry
+        links:
+          - kafka
+    published_ports:
+      - 0.0.0.0:8081:8081/tcp
+    stop_signal: 'RTMIN+3'
+provisioner:
+  name: ansible
+schema_registry_kafkastore_bootstrap_servers_hostscenario:
+  name: default
+  test_sequence:
+    - dependency
+    - create
+    - prepare
+    - converge
+    #- idempotence
+    #- side_effect
+    - verify
+verifier:
+  name: ansible

@@ -1,0 +1,66 @@
+---
+
+## General
+# Version
+schema_registry_version: 7.0.1
+
+# Package URL
+schema_registry_release_name: "confluent-{{ schema_registry_version }}"
+schema_registry_package: "{{ schema_registry_release_name }}.tar.gz"
+schema_registry_url: "https://packages.confluent.io/archive/{{ schema_registry_version[:3] }}/{{ schema_registry_package }}"
+
+# Package paths
+schema_registry_download_path: /tmp
+schema_registry_package_path: "{{ schema_registry_download_path }}/{{ schema_registry_package }}"
+schema_registry_extracted_path: "{{ schema_registry_download_path }}/{{ schema_registry_release_name }}"
+
+# Set true to force the download and installation of the binary
+schema_registry_force_reinstall: false
+  
+# Config path
+schema_registry_config_path: /etc/schema-registry/schema-registry.properties
+
+
+# Installation path
+schema_registry_root_path: "" 
+schema_registry_bin_path: "{{ schema_registry_root_path }}/bin"
+schema_registry_skeleton_paths:
+  - "{{ schema_registry_bin_path }}"
+schema_registry_exec_name_start: schema-registry-start
+schema_registry_exec_name_stop: schema-registry-stop
+
+
+## Service options
+# Documentation
+schema_registry_documentation_link: ""
+
+# Owner
+schema_registry_user: schema_registry
+schema_registry_group: schema_registry
+
+# Maximum number of files limit
+schema_registry_max_files: 32768
+
+# Start on boot
+schema_registry_service_enabled: True
+# Current state: started, stopped
+schema_registry_service_state: started
+
+# Logs
+# If wanted to output the logs to a file define the following variable
+# More information at https://www.freedesktop.org/software/systemd/man/systemd.exec.html#StandardOutput=
+schema_registry_log_path: /var/log
+schema_registry_log_file: "{{ schema_registry_log_path }}/schema_registry.log"
+schema_registry_log_output: "{% if schema_registry_log_file is defined %} file:{{ schema_registry_log_file }} {% else %} journal {% endif %}"
+
+# Flags
+schema_registry_private_tmp: true
+  
+# Schema Registry Properties
+schema_registry_kafkastore_topic: _schemas
+schema_registry_debug: false
+schema_registry_host_name: "{{ ansible_nodename }}"
+schema_registry_port: 8081
+schema_registry_kafkastore_bootstrap_servers_port: 9092
+schema_registry_kafkastore_bootstrap_servers_host: kafka
+schema_registry_compatibility_level: full_transitive

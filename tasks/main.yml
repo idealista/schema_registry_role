@@ -1,0 +1,16 @@
+---
+
+- name: SCHEMA_REGISTRY | Install
+  include: install.yml
+  tags:
+    - schema_registry_install
+
+- name: SCHEMA_REGISTRY | Configure
+  include: config.yml
+  tags:
+    - schema_registry_configure
+
+- name: SCHEMA_REGISTRY | Service
+  include: service.yml
+  tags:
+    - schema_registry_service

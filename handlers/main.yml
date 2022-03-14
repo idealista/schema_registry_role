@@ -1,0 +1,7 @@
+---
+
+- name: restart schema_registry
+  systemd:
+    name: schema_registry
+    state: restarted
+  when: schema_registry_service_state != 'stopped'

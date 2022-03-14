@@ -1,0 +1,78 @@
+---
+
+- name: SCHEMA_REGISTRY | Ensure schema_registry group
+  group:
+    name: "{{ schema_registry_group }}"
+    system: yes
+    state: present
+  tags:
+    - schema_registry_install
+
+- name: SCHEMA_REGISTRY | Ensure schema_registry user
+  user:
+    name: "{{ schema_registry_user }}"
+    group: "{{ schema_registry_group }}"
+    home: /bin/false
+  tags:
+    - schema_registry_install
+
+- name: SCHEMA_REGISTRY | Ensure skeleton paths
+  file:
+    dest: "{{ item }}"
+    owner: "{{ schema_registry_user }}"
+    group: "{{ schema_registry_group }}"
+    state: directory
+  with_items:
+    - "{{ schema_registry_skeleton_paths }}"
+  tags:
+    - schema_registry_install
+
+- name: SCHEMA_REGISTRY | Ensure skeleton log paths
+  file:
+    dest: "{{ schema_registry_log_path }}"
+    owner: "{{ schema_registry_user }}"
+    group: "{{ schema_registry_group }}"
+    state: directory
+  when: schema_registry_log_file is defined
+  tags:
+    - schema_registry_install
+
+- name: SCHEMA_REGISTRY | Check schema_registry version
+  command: "{{ schema_registry_exec_name_start }} --version"
+  register: schema_registry_check
+  changed_when: false
+  ignore_errors: true
+  check_mode: no
+  tags:
+    - schema_registry_install
+      
+- debug:
+    var: schema_registry_package_path
+
+- name: SCHEMA_REGISTRY | Download package
+  get_url:
+    url: "{{ schema_registry_url }}"
+    dest: "{{ schema_registry_package_path }}"
+  when: schema_registry_force_reinstall or schema_registry_check is failed or schema_registry_version not in schema_registry_check.stderr
+  tags:
+    - schema_registry_install
+
+- name: SCHEMA_REGISTRY | Extract downloaded package
+  unarchive:
+    src: "{{ schema_registry_package_path }}"
+    dest: "/"
+    remote_src: True
+    extra_opts: [--strip-components=1]
+  when: schema_registry_force_reinstall or schema_registry_check is failed or schema_registry_version  not in schema_registry_check.stderr
+  tags:
+    - schema_registry_install
+
+- name: SCHEMA_REGISTRY | Copy properties template
+  template:
+    src: schema-registry.properties.j2
+    dest: "{{ schema_registry_config_path }}"
+    mode: 0644
+    owner: "{{ schema_registry_user }}"
+    group: "{{ schema_registry_group }}"
+  tags:
+    - schema_registry_install

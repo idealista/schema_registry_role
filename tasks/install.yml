@@ -27,16 +27,6 @@
   tags:
     - schema_registry_install
 
-- name: SCHEMA_REGISTRY | Ensure skeleton log paths
-  file:
-    dest: "{{ schema_registry_log_path }}"
-    owner: "{{ schema_registry_user }}"
-    group: "{{ schema_registry_group }}"
-    state: directory
-  when: schema_registry_log_file is defined
-  tags:
-    - schema_registry_install
-
 - name: SCHEMA_REGISTRY | Check schema_registry version
   command: "{{ schema_registry_exec_name_start }} --version"
   register: schema_registry_check

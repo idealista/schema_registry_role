@@ -5,7 +5,7 @@
   tags:
     - schema_registry_install
   when: schema_registry_kafkastore_bootstrap_servers_host is defined \
-        or schema_registry_kafkastore_bootstrap_servers_port is defined
+        and schema_registry_kafkastore_bootstrap_servers_port is defined
 
 - name: SCHEMA_REGISTRY | Service
   include: service.yml

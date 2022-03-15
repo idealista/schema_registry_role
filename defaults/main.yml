@@ -61,6 +61,6 @@ schema_registry_kafkastore_topic: _schemas
 schema_registry_debug: false
 schema_registry_host_name: "{{ ansible_nodename }}"
 schema_registry_port: 8081
-schema_registry_kafkastore_bootstrap_servers_port: 9092
-schema_registry_kafkastore_bootstrap_servers_host: kafka
+# schema_registry_kafkastore_bootstrap_servers_port: 9092
+# schema_registry_kafkastore_bootstrap_servers_host: kafka
 schema_registry_compatibility_level: full_transitive

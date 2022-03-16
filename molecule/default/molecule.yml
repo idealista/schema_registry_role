@@ -27,12 +27,14 @@ platforms:
           - zookeepertest
         links:
           - kafka 
+          - kafka2
     pre_build_image: false
     dns_servers:
       - 10.80.1.86
       - 10.80.5.61
       - 10.80.11.5
     dns_search_domains:
+
   - name: kafka
     hostname: kafka
     image: idealista/jdk:8u265-stretch-openjdk-headless
@@ -49,6 +51,27 @@ platforms:
         aliases:
           - kafka
         links:
+          - schema_registry
+          - zookeepertest
+          - kafka2
+
+  - name: kafka2
+    hostname: kafka2
+    image: idealista/jdk:8u265-stretch-openjdk-headless
+    privileged: true
+    capabilities:
+      - SYS_ADMIN
+    volumes:
+      - '/sys/fs/cgroup:/sys/fs/cgroup:ro'
+    groups:
+      - kafka_group
+    command: '/lib/systemd/systemd'
+    networks:
+      - name: kafka-network
+        aliases:
+          - kafka
+        links:
+          - kafka
           - schema_registry
           - zookeepertest
 
@@ -72,12 +95,13 @@ platforms:
           - schemaregistry
         links:
           - kafka
+          - kafka2
     published_ports:
       - 0.0.0.0:8081:8081/tcp
     stop_signal: 'RTMIN+3'
 provisioner:
   name: ansible
-schema_registry_kafkastore_bootstrap_servers_hostscenario:
+scenario:
   name: default
   test_sequence:
     - dependency

@@ -9,5 +9,7 @@ zookeeper_hosts:
 
 kafka_offsets_topic_replication_factor: 1
 kafka_transaction_state_log_replication_factor: 1
-schema_registry_kafkastore_bootstrap_servers_host: kafka
-schema_registry_kafkastore_bootstrap_servers_port: 9092
+schema_registry_kafkastore_bootstrap_server_hosts: 
+  - kafka
+  - kafka2
+schema_registry_kafkastore_bootstrap_server_port: 9092

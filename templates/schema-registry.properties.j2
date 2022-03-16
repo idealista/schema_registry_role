@@ -24,7 +24,7 @@ listeners=http://{{ schema_registry_host_name }}:{{ schema_registry_port }}
 # Use this setting to specify the bootstrap servers for your Kafka cluster and it
 # will be used both for selecting the leader schema registry instance and for storing the data for
 # registered schemas.
-kafkastore.bootstrap.servers=PLAINTEXT://{{ schema_registry_kafkastore_bootstrap_servers_host }}:{{ schema_registry_kafkastore_bootstrap_servers_port }}
+kafkastore.bootstrap.servers={{['PLAINTEXT://'] | product(schema_registry_kafkastore_bootstrap_server_hosts) | map('join') | product([schema_registry_kafkastore_bootstrap_server_port]) | map('join', ':') | join(',')  }}
 
 # The name of the topic to store schemas in
 kafkastore.topic={{ schema_registry_kafkastore_topic }}

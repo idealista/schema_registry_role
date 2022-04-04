@@ -1,6 +1,9 @@
----
 dependency:
   name: galaxy
+  options:
+    ignore-certs: True
+    ignore-errors: True
+    role-file: molecule/default/requirements.yml
 driver:
   name: docker
 platforms:
@@ -113,3 +116,4 @@ scenario:
     - verify
 verifier:
   name: ansible
+

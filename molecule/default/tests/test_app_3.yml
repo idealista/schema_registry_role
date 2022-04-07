@@ -4,7 +4,7 @@ http:
     # required attributes
     status: 200
     # optional attributes
-    timeout: 1000
+    timeout: 10000
     request-headers: # Set request header values
        - "Content-Type: application/vnd.schemaregistry.v1+json"
     request-body: '{"schema":"{\"type\":\"record\",\"name\":\"v1\",\"fields\":[{\"name\":\"User\",\"type\":\"string\"},{\"name\":\"age\",\"type\":\"int\",\"default\":\"2\"}]}"}' # request body

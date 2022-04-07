@@ -1,0 +1,21 @@
+---
+
+- name: SCHEMA_REGISTRY | Copy Daemon script
+  template:
+    src: schema_registry.service.j2
+    dest: /etc/systemd/system/schema_registry.service
+    mode: 0644
+    owner: root
+    group: root
+  notify: restart schema_registry
+  tags:
+    - schema_registry_service
+
+- name: SCHEMA_REGISTRY | Configuring service
+  systemd:
+    name: schema_registry
+    state: "{{ schema_registry_service_state }}"
+    enabled: "{{ schema_registry_service_enabled }}"
+    daemon_reload: yes
+  tags:
+    - schema_registry_service

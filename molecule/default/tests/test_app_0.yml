@@ -1,0 +1,19 @@
+---
+## TODO: Remember to adapt goss tests to your convenience
+
+service:
+  {{ schema_registry_group }}:
+    enabled: true
+    running: true
+
+
+user:
+  {{ schema_registry_user }}:
+    exists: true
+    groups:
+      - {{ schema_registry_group }}
+
+group:
+  {{ schema_registry_group }}:
+    exists: true
+      

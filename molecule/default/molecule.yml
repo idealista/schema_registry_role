@@ -97,6 +97,7 @@ platforms:
         aliases:
           - schemaregistry
         links:
+          - schema_registry
           - kafka
           - kafka2
     published_ports:

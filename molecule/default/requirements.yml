@@ -1,0 +1,4 @@
+- src: https://github.com/idealista/kafka_role.git
+  scm: git
+  version: 1.15.0
+  name: kafka_role

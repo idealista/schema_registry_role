@@ -54,7 +54,7 @@ platforms:
         aliases:
           - kafka
         links:
-          - schema_registry
+          - schemaregistry
           - zookeepertest
           - kafka2
 
@@ -75,7 +75,7 @@ platforms:
           - kafka
         links:
           - kafka
-          - schema_registry
+          - schemaregistry
           - zookeepertest
 
   - name: schemaregistry
@@ -97,7 +97,7 @@ platforms:
         aliases:
           - schemaregistry
         links:
-          - schema_registry
+          - schemaregistry
           - kafka
           - kafka2
     published_ports:

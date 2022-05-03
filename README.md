@@ -40,7 +40,7 @@ Create or add to your roles dependency file (e.g requirements.yml):
 
 ```
 - src: idealista.schema_registry_role
-  version: 1.0.0
+  version: 1.0.1
   name: schema_registry_role
 ```
 

@@ -14,6 +14,11 @@ This project adheres to [Semantic Versioning](http://semver.org/) and [Keep a ch
 ### Changed
  *[#<issue_number>](https://github.com/idealista/schema_registry_role/issues/<issue_number>) \<Change description\>* @\<author\>
 
+## [1.0.1](https://github.com/idealista/schema_registry_role/tree/1.0.1)
+### [Full Changelog](https://github.com/idealista/schema_registry_role/compare/1.0.0...1.0.1)
+### Fixed
+ *[#4](https://github.com/idealista/schema_registry_role/issues/4) Fixing role always reinstalling @plozano94
+
 ## [1.0.0](https://github.com/idealista/schema_registry_role/tree/1.0.0)
 ### Added
 - *First release*

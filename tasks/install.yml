@@ -36,9 +36,6 @@
   tags:
     - schema_registry_install
       
-- debug:
-    var: schema_registry_check
-
 - name: SCHEMA_REGISTRY | Download package
   get_url:
     url: "{{ schema_registry_url }}"
@@ -53,7 +50,7 @@
     dest: "/"
     remote_src: True
     extra_opts: [--strip-components=1]
-  when: schema_registry_force_reinstall or schema_registry_check is failed or schema_registry_version  not in schema_registry_check.stderr
+  when: schema_registry_force_reinstall or schema_registry_check is failed or schema_registry_version  not in schema_registry_check.stdout
   tags:
     - schema_registry_install
 

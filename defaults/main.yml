@@ -26,7 +26,7 @@ schema_registry_root_path: ""
 schema_registry_bin_path: "{{ schema_registry_root_path }}/bin"
 schema_registry_skeleton_paths:
   - "{{ schema_registry_bin_path }}"
-schema_registry_exec_name_start: find /share/java/schema-registry/ -name \*schema-registry-[0-9]\*\ -type f  | sed 's/.*schema-registry-\([0-9.]*\)\..*/\1/'
+schema_registry_exec_name_start: find /share/java/schema-registry/ -name \*schema-registry-[0-9]\* -type f  | sed 's/.*schema-registry-\([0-9.]*\)\..*/\1/'
 schema_registry_exec_name_stop: schema-registry-stop
 
 

@@ -32,10 +32,6 @@ platforms:
           - kafka 
           - kafka2
     pre_build_image: false
-    dns_servers:
-      - 10.80.1.86
-      - 10.80.5.61
-      - 10.80.11.5
     dns_search_domains:
 
   - name: kafka

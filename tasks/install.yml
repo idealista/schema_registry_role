@@ -28,7 +28,7 @@
     - schema_registry_install
 
 - name: SCHEMA_REGISTRY | Check schema_registry version
-  command: "{{ schema_registry_exec_name_start }} --version"
+  shell: "{{ schema_registry_check_version }}"
   register: schema_registry_check
   changed_when: false
   ignore_errors: true
@@ -36,14 +36,11 @@
   tags:
     - schema_registry_install
       
-- debug:
-    var: schema_registry_package_path
-
 - name: SCHEMA_REGISTRY | Download package
   get_url:
     url: "{{ schema_registry_url }}"
     dest: "{{ schema_registry_package_path }}"
-  when: schema_registry_force_reinstall or schema_registry_check is failed or schema_registry_version not in schema_registry_check.stderr
+  when: schema_registry_force_reinstall or schema_registry_check is failed or schema_registry_version not in schema_registry_check.stdout
   tags:
     - schema_registry_install
 
@@ -53,7 +50,7 @@
     dest: "/"
     remote_src: True
     extra_opts: [--strip-components=1]
-  when: schema_registry_force_reinstall or schema_registry_check is failed or schema_registry_version  not in schema_registry_check.stderr
+  when: schema_registry_force_reinstall or schema_registry_check is failed or schema_registry_version  not in schema_registry_check.stdout
   tags:
     - schema_registry_install
 

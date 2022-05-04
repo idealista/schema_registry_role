@@ -28,7 +28,7 @@
     - schema_registry_install
 
 - name: SCHEMA_REGISTRY | Check schema_registry version
-  shell: "{{ schema_registry_exec_name_start }}"
+  shell: "{{ schema_registry_check_version }}"
   register: schema_registry_check
   changed_when: false
   ignore_errors: true

@@ -50,7 +50,7 @@ schema_registry_service_state: started
 # Logs
 # If wanted to output the logs to a file define the following variable
 # More information at https://www.freedesktop.org/software/systemd/man/systemd.exec.html#StandardOutput=
-schema_registry_log_path: /var/log
+schema_registry_log_path: /var/log/schema_registry
 schema_registry_log_file: "{{ schema_registry_log_path }}/schema_registry.log"
 schema_registry_log_output: "{% if schema_registry_log_file is defined %} file:{{ schema_registry_log_file }} {% else %} journal {% endif %}"
 

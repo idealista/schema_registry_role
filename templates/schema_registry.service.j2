@@ -13,8 +13,8 @@ ExecStart={{ schema_registry_bin_path }}/{{ schema_registry_exec_name_start }} {
 ExecStop={{ schema_registry_bin_path }}/{{ schema_registry_exec_name_stop }}
 
 
-StandardOutput=append:{{ schema_registry_log_output }}
-StandardError=append:{{ schema_registry_log_output }}
+StandardOutput={{ schema_registry_log_output }}
+StandardError={{ schema_registry_log_output }}
 ExecReload=/bin/kill -HUP $MAINPID
 KillSignal=SIGTERM
 Restart=on-failure

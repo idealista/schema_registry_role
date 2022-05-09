@@ -14,6 +14,12 @@ This project adheres to [Semantic Versioning](http://semver.org/) and [Keep a ch
 ### Changed
  *[#<issue_number>](https://github.com/idealista/schema_registry_role/issues/<issue_number>) \<Change description\>* @\<author\>
 
+## [1.0.2](https://github.com/idealista/schema_registry_role/tree/1.0.2)
+### [Full Changelog](https://github.com/idealista/schema_registry_role/compare/1.0.1...1.0.2)
+### Fixed
+ *[#7](https://github.com/idealista/schema_registry_role/issues/7) error in StandardOutput and StandardError at schema_registry.service.j2  @plozano94
+
+
 ## [1.0.1](https://github.com/idealista/schema_registry_role/tree/1.0.1)
 ### [Full Changelog](https://github.com/idealista/schema_registry_role/compare/1.0.0...1.0.1)
 ### Fixed

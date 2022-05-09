@@ -8,13 +8,14 @@ PrivateTmp={{ schema_registry_private_tmp }}
 User={{ schema_registry_user }}
 Group={{ schema_registry_group }}
 LimitNOFILE={{ schema_registry_max_files }}
+Environment='SCHEMA_REGISTRY_LOG4J_OPTS={{ schema_registry_log4j_opts }}'
+Environment='SCHEMA_REGISTRY_HEAP_OPTS={{ schema_registry_heap_opts }}'
+Environment='SCHEMA_REGISTRY_JVM_PERFORMANCE_OPTS={{ schema_registry_jvm_opts }}'
+Environment='SCHEMA_REGISTRY_JMX_OPTS={{ schema_registry_jmx_opts }}'
 
 ExecStart={{ schema_registry_bin_path }}/{{ schema_registry_exec_name_start }} {{ schema_registry_config_path }} 
 ExecStop={{ schema_registry_bin_path }}/{{ schema_registry_exec_name_stop }}
 
-
-StandardOutput={{ schema_registry_log_output }}
-StandardError={{ schema_registry_log_output }}
 ExecReload=/bin/kill -HUP $MAINPID
 KillSignal=SIGTERM
 Restart=on-failure

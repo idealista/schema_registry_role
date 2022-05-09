@@ -18,14 +18,15 @@ schema_registry_extracted_path: "{{ schema_registry_download_path }}/{{ schema_r
 schema_registry_force_reinstall: false
   
 # Config path
-schema_registry_config_path: /etc/schema-registry/schema-registry.properties
+schema_registry_config_folder: /etc/schema-registry
+schema_registry_config_path: "{{ schema_registry_config_folder }}/schema-registry.properties"
 
 
 # Installation path
 schema_registry_root_path: "" 
 schema_registry_bin_path: "{{ schema_registry_root_path }}/bin"
 schema_registry_skeleton_paths:
-  - "{{ schema_registry_bin_path }}"
+  - "{{ schema_registry_log_path }}"
 schema_registry_exec_name_start: schema-registry-start
 schema_registry_check_version: find /share/java/schema-registry/ -name \*schema-registry-[0-9]\* -type f  | sed 's/.*schema-registry-\([0-9.]*\)\..*/\1/'
 schema_registry_exec_name_stop: schema-registry-stop
@@ -34,6 +35,7 @@ schema_registry_exec_name_stop: schema-registry-stop
 ## Service options
 # Documentation
 schema_registry_documentation_link: ""
+schema_registry_local_config_folder: "{{ role_path }}/files"
 
 # Owner
 schema_registry_user: schema_registry
@@ -52,7 +54,7 @@ schema_registry_service_state: started
 # More information at https://www.freedesktop.org/software/systemd/man/systemd.exec.html#StandardOutput=
 schema_registry_log_path: /var/log/schema_registry
 schema_registry_log_file: "{{ schema_registry_log_path }}/schema_registry.log"
-schema_registry_log_output: "{% if schema_registry_log_file is defined %} file:{{ schema_registry_log_file }} {% else %} journal {% endif %}"
+schema_registry_log_output: "{% if schema_registry_log_file is defined %} append:{{ schema_registry_log_file }} {% else %} journal {% endif %}"
 
 # Flags
 schema_registry_private_tmp: true
@@ -65,3 +67,8 @@ schema_registry_port: 8081
 # schema_registry_kafkastore_bootstrap_server_port: 9092
 # schema_registry_kafkastore_bootstrap_server_hosts: kafka
 schema_registry_compatibility_level: full_transitive
+
+schema_registry_log4j_opts: -Dlog4j.configuration=file:{{schema_registry_config_folder}}/log4j.properties -Dschema-registry.log.dir={{ schema_registry_log_path }}
+schema_registry_heap_opts: -Xmx256M
+schema_registry_jvm_opts: -server -XX:+UseG1GC -XX:MaxGCPauseMillis=20 -XX:InitiatingHeapOccupancyPercent=35 -XX:+ExplicitGCInvokesConcurrent -Djava.awt.headless=true
+schema_registry_jmx_opts: -Dcom.sun.management.jmxremote -Dcom.sun.management.jmxremote.authenticate=false -Dcom.sun.management.jmxremote.ssl=false

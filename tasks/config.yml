@@ -1,0 +1,20 @@
+- name: SCHEMA_REGISTRY | Copy properties template
+  template:
+    src: schema-registry.properties.j2
+    dest: "{{ schema_registry_config_path }}"
+    mode: 0644
+    owner: "{{ schema_registry_user }}"
+    group: "{{ schema_registry_group }}"
+  tags:
+    - schema_registry_install
+  
+- name: SCHEMA_REGISTRY | Copy log4j file
+  copy:
+    src: "{{ schema_registry_local_config_folder }}/log4j.properties"
+    dest: "{{ schema_registry_config_folder }}/log4j.properties"
+    remote_src: no
+    mode: 0644
+    owner: "{{ schema_registry_user }}"
+    group: "{{ schema_registry_group }}"
+  notify:
+    - restart schema_registry

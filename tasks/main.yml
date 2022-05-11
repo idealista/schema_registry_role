@@ -8,6 +8,13 @@
     schema_registry_kafkastore_bootstrap_server_hosts is defined
     and schema_registry_kafkastore_bootstrap_server_port is defined
 
+- name: SCHEMA_REGISTRY | Configure
+  include: config.yml
+  tags:
+    - schema_registry_configure
+  when: schema_registry_kafkastore_bootstrap_server_hosts is defined
+    and schema_registry_kafkastore_bootstrap_server_port is defined
+
 - name: SCHEMA_REGISTRY | Service
   include: service.yml
   tags:

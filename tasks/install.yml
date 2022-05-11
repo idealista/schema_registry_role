@@ -54,12 +54,3 @@
   tags:
     - schema_registry_install
 
-- name: SCHEMA_REGISTRY | Copy properties template
-  template:
-    src: schema-registry.properties.j2
-    dest: "{{ schema_registry_config_path }}"
-    mode: 0644
-    owner: "{{ schema_registry_user }}"
-    group: "{{ schema_registry_group }}"
-  tags:
-    - schema_registry_install

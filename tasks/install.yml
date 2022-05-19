@@ -36,7 +36,7 @@
   tags:
     - schema_registry_install
       
-- name: SCHEMA_REGISTRY | Download and extract files in temp dir
+- name: SCHEMA_REGISTRY | Download and extract files in final dir
   unarchive:
     src: "{{ schema_registry_url }}"
     dest: "{{ schema_registry_extracted_path }}"

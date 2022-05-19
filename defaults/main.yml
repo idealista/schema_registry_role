@@ -29,7 +29,7 @@ schema_registry_skeleton_paths:
   - "{{ schema_registry_config_folder }}"
   - "{{ schema_registry_extracted_path }}"
 schema_registry_exec_name_start: schema-registry-start
-schema_registry_check_version: find /opt/confluent-{{schema_registry_version}}/share/java/schema-registry/ -name \*schema-registry-[0-9]\* -type f  | sed 's/.*schema-registry-\([0-9.]*\)\..*/\1/'
+schema_registry_check_version: find {{schema_registry_extracted_path}}/share/java/schema-registry/ -name \*schema-registry-[0-9]\* -type f  | sed 's/.*schema-registry-\([0-9.]*\)\..*/\1/'
 schema_registry_exec_name_stop: schema-registry-stop
 
 

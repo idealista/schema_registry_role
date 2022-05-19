@@ -10,8 +10,7 @@ schema_registry_package: "{{ schema_registry_release_name }}.tar.gz"
 schema_registry_url: "https://packages.confluent.io/archive/{{ schema_registry_version[:3] }}/{{ schema_registry_package }}"
 
 # Package paths
-schema_registry_download_path: /tmp
-schema_registry_package_path: "{{ schema_registry_download_path }}/{{ schema_registry_package }}"
+schema_registry_download_path: /opt
 schema_registry_extracted_path: "{{ schema_registry_download_path }}/{{ schema_registry_release_name }}"
 
 # Set true to force the download and installation of the binary
@@ -23,12 +22,14 @@ schema_registry_config_path: "{{ schema_registry_config_folder }}/schema-registr
 
 
 # Installation path
-schema_registry_root_path: "" 
+schema_registry_root_path: "{{ schema_registry_extracted_path }}" 
 schema_registry_bin_path: "{{ schema_registry_root_path }}/bin"
 schema_registry_skeleton_paths:
   - "{{ schema_registry_log_path }}"
+  - "{{ schema_registry_config_folder }}"
+  - "{{ schema_registry_extracted_path }}"
 schema_registry_exec_name_start: schema-registry-start
-schema_registry_check_version: find /share/java/schema-registry/ -name \*schema-registry-[0-9]\* -type f  | sed 's/.*schema-registry-\([0-9.]*\)\..*/\1/'
+schema_registry_check_version: find {{schema_registry_extracted_path}}/share/java/schema-registry/ -name \*schema-registry-[0-9]\* -type f  | sed 's/.*schema-registry-\([0-9.]*\)\..*/\1/'
 schema_registry_exec_name_stop: schema-registry-stop
 
 

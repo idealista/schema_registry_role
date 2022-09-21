@@ -34,3 +34,10 @@ debug={{ schema_registry_debug }}
 
 # schema_registry_compatibility_level
 schema.compatibility.level={{ schema_registry_compatibility_level }}
+
+############################# Extra Properties #############################
+{% if schema_registry_config_extra_properties is defined %}
+{% for config in schema_registry_config_extra_properties %}
+{{ config.key }}={{ config.value }}
+{% endfor %}
+{% endif %}

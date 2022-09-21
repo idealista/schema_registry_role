@@ -13,3 +13,6 @@ schema_registry_kafkastore_bootstrap_server_hosts:
   - kafka
   - kafka2
 schema_registry_kafkastore_bootstrap_server_port: 9092
+schema_registry_config_extra_properties:
+  - key: kafkastore.timeout.ms
+    value: 1000

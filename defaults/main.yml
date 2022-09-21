@@ -75,3 +75,4 @@ schema_registry_jvm_opts: -server -XX:+UseG1GC -XX:MaxGCPauseMillis=20 -XX:Initi
 schema_registry_jmx_opts: -Dcom.sun.management.jmxremote -Dcom.sun.management.jmxremote.authenticate=false -Dcom.sun.management.jmxremote.ssl=false
 
 schema_registry_config_extra_properties: []
+schema_registry_jmx_port: 5555

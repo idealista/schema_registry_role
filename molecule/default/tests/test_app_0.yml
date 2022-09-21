@@ -16,4 +16,12 @@ user:
 group:
   {{ schema_registry_group }}:
     exists: true
+
+file:
+  {{ schema_registry_config_path }}:
+    owner: {{ schema_registry_user }}
+    group: {{ schema_registry_group }}
+    exists: true
+    contains:
+      - kafkastore.timeout.ms=1000
       

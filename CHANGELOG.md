@@ -9,20 +9,20 @@ This project adheres to [Semantic Versioning](http://semver.org/) and [Keep a ch
 ### Removed
 ### Fixed
 
-## [X.Y.Z](https://github.com/idealista/schema_registry_role/tree/X.Y.Z)
-### [Full Changelog](https://github.com/idealista/schema_registry_role/compare/1.0.0...X.Y.Z)
-### Changed
- *[#<issue_number>](https://github.com/idealista/schema_registry_role/issues/<issue_number>) \<Change description\>* @\<author\>
+## [1.1.0](https://github.com/idealista/schema_registry_role/tree/1.1.0)
+### [Full Changelog](https://github.com/idealista/schema_registry_role/compare/1.0.3...1.1.0)
+### Added
+- *[#13](https://github.com/idealista/schema_registry_role/issues/13) Add extra properties in config file*  @jmonterrubio
 
 ## [1.0.3](https://github.com/idealista/schema_registry_role/tree/1.0.3)
 ### [Full Changelog](https://github.com/idealista/schema_registry_role/compare/1.0.2...1.0.3)
 ### Fixed
- *[#19](https://github.com/idealista/schema_registry_role/issues/10) error deploying in some Debian10 machines  @plozano94
+ *[#10](https://github.com/idealista/schema_registry_role/issues/10) error deploying in some Debian10 machines*  @plozano94
 
 ## [1.0.2](https://github.com/idealista/schema_registry_role/tree/1.0.2)
 ### [Full Changelog](https://github.com/idealista/schema_registry_role/compare/1.0.1...1.0.2)
 ### Fixed
- *[#7](https://github.com/idealista/schema_registry_role/issues/7) error in StandardOutput and StandardError at schema_registry.service.j2  @plozano94
+ *[#7](https://github.com/idealista/schema_registry_role/issues/7) error in StandardOutput and StandardError at schema_registry.service.j2*  @plozano94
 
 
 ## [1.0.1](https://github.com/idealista/schema_registry_role/tree/1.0.1)

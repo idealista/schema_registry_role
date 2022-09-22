@@ -13,6 +13,8 @@ This project adheres to [Semantic Versioning](http://semver.org/) and [Keep a ch
 ### [Full Changelog](https://github.com/idealista/schema_registry_role/compare/1.0.3...1.1.0)
 ### Added
 - *[#13](https://github.com/idealista/schema_registry_role/issues/13) Add extra properties in config file*  @jmonterrubio
+### Fixed
+- *[#15](https://github.com/idealista/schema_registry_role/issues/15) Add jmx port configuration in service template*   @plozano94
 
 ## [1.0.3](https://github.com/idealista/schema_registry_role/tree/1.0.3)
 ### [Full Changelog](https://github.com/idealista/schema_registry_role/compare/1.0.2...1.0.3)

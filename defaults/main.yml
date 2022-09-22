@@ -73,3 +73,6 @@ schema_registry_log4j_opts: -Dlog4j.configuration=file:{{schema_registry_config_
 schema_registry_heap_opts: -Xmx256M
 schema_registry_jvm_opts: -server -XX:+UseG1GC -XX:MaxGCPauseMillis=20 -XX:InitiatingHeapOccupancyPercent=35 -XX:+ExplicitGCInvokesConcurrent -Djava.awt.headless=true
 schema_registry_jmx_opts: -Dcom.sun.management.jmxremote -Dcom.sun.management.jmxremote.authenticate=false -Dcom.sun.management.jmxremote.ssl=false
+
+schema_registry_config_extra_properties: []
+schema_registry_jmx_port: 5555

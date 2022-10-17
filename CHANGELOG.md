@@ -6,6 +6,7 @@ This project adheres to [Semantic Versioning](http://semver.org/) and [Keep a ch
 ## [Unreleased](https://github.com/idealista/schema_registry_role/tree/develop)
 ### Changed
 ### Added
+- *[#18](https://github.com/idealista/schema_registry_role/issues/18) Adding listeners configuration instead of getting the fixed ansible nodename @plozano94
 ### Removed
 ### Fixed
 

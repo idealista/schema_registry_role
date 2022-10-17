@@ -76,3 +76,6 @@ schema_registry_jmx_opts: -Dcom.sun.management.jmxremote -Dcom.sun.management.jm
 
 schema_registry_config_extra_properties: []
 schema_registry_jmx_port: 5555
+
+schema_registry_listeners:
+  - "http://localhost:{{ schema_registry_port }}"

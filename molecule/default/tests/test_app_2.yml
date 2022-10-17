@@ -1,6 +1,6 @@
 http:
   # Registering invalid schema due to FULL_TRANSITIVE compatibility
-  http://{{ schema_registry_host_name }}:{{ schema_registry_port }}/subjects/Kafka-value/versions:
+  http://localhost:{{ schema_registry_port }}/subjects/Kafka-value/versions:
     # required attributes
     status: 409
     # optional attributes

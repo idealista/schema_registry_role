@@ -1,6 +1,6 @@
 http:
   # Registering valid schema
-  http://{{ schema_registry_host_name }}:{{ schema_registry_port }}/subjects/Kafka-value/versions:
+  http://localhost:{{ schema_registry_port }}/subjects/Kafka-value/versions:
     # required attributes
     status: 200
     # optional attributes
